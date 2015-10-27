@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<javafilm>
+<films>
+<film>
+<id>1</id>
+<name>Star Wars: Episode VII - The Force Awakens</name>
+<duration>136 min</duration>
+<description>A continuation of the saga created by George Lucas</description>
+<year>2015</year>
+<status>Post-production</status>
+<is_serial>0</is_serial>
+</film>
+<film>
+<id>2</id>
+<name>Farscape</name>
+<duration>50 min</duration>
+<description>Thrown into a distant part of the universe, an Earth astronaut finds himself part of a fugitive alien starship crew.</description>
+<year>1999</year>
+<status>Completed</status>
+<is_serial>1</is_serial>
+</film>
+</films>
+<genres>
+<genre>
+<id>1</id>
+<name>Action</name>
+<description>
+The action genre is a class of creative works characterized by emphasis on exciting action sequences.
+</description>
+</genre>
+<genre>
+<id>2</id>
+<name>Adventure</name>
+<description>
+Adventure films are often use their action scenes preferably to display and explore exotic locations in an energetic way.
+</description>
+</genre>
+<genre>
+<id>3</id>
+<name>Fantasy</name>
+<description>
+Fantasy is a genre of fiction that commonly uses magic and other supernatural phenomena as a primary plot element, theme, or setting.
+</description>
+</genre>
+</genres>
+<genre_lists>
+<genre_list>
+<film_id>1</film_id>
+<genre_id>1</genre_id>
+</genre_list>
+<genre_list>
+<film_id>1</film_id>
+<genre_id>2</genre_id>
+</genre_list>
+<genre_list>
+<film_id>1</film_id>
+<genre_id>3</genre_id>
+</genre_list>
+</genre_lists>
+<persons>
+<person>
+<id>1</id>
+<name>J.J. Abrams</name>
+<gender>male</gender>
+<birthdate>1966</birthdate>
+<biography>J.J. Abrams was born on June 27, 1966 in New York City, New York, USA as Jeffrey Jacob Abrams. He is a producer and writer, known for Lost (2004), Mission: Impossible III (2006) and Super 8 (2011). He has been married to Katie McGrath since 1996. They have three children.</biography>
+</person>
+</persons>
+<person_lists>
+<person_list>
+<film_id>1</film_id>
+<person_id>1</person_id>
+<role>Director</role>
+</person_list>
+</person_lists>
+<productions>
+<production>
+<id>1</id>
+<film_id>1</film_id>
+<production_name>Lucasfilm</production_name>
+<country>USA</country>
+</production>
+<production>
+<id>2</id>
+<film_id>1</film_id>
+<production_name>Bad Robot</production_name>
+<country>USA</country>
+</production>
+</productions>
+<series_list>
+<series>
+<id>1</id>
+<film_id>2</film_id>
+<name>Eat Me</name>
+<description>The crew of Moya come across a diseased Leviathan used by the Peacekeepers as a prison for the criminally insane. It has been taken over by an individual who "twins" the humanoid inhabitants of the ship and uses them as a food source.</description>
+<year>2001</year>
+<season>3</season>
+<episode>6</episode>
+</series>
+</series_list>
+</javafilm>
