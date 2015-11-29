@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Film Countries</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-1.11.3.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            getFilmCountries = function () {
+                $.ajax({
+                    type: "GET",
+                    url: "./webresources/Film/getFilmCountries",
+                    success: function (responseText, statusText) {
+                        if (statusText === 'success') {
+                            for (var i = 0; i < responseText.length; i++) {
+                                row = $('<tr id="main-content-' + i + '">' +
+                                        '<td>' + responseText[i][0] + '</td>' +
+                                        '<td>' + responseText[i][1] + '</td>' +
+                                        '<td>' + responseText[i][2] + '</td>');
+                                row.appendTo('#main-content');
+                            }
+                        }
+                    },
+                    error: function (responseText) {
+                        message("Can't get film countries", 'alert-danger');
+                        console.log(JSON.stringify(responseText));
+                    },
+                    dataType: "json"
+                });
+            };
+            $(function () {
+                getFilmCountries();
+            });
+            message = function (msg, newClass) {
+                $('#message-area').html(msg);
+                $("#message-area").removeClass();
+                $("#message-area").removeAttr('style');
+                $("#message-area").addClass('alert');
+                $("#message-area").addClass(newClass);
+            };
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="films.html">Films</a></li>
+                            <li><a href="productions.html">Productions</a></li>
+                            <li class="active"><a href="filmcountries.html">Productions</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+            </nav>
+            <table id="main-content" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>filmId</th>
+                        <th>filmName</th>
+                        <th>country</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="message-area" class="alert alert-info" role="alert" style="display: none"></div>
+        </div>
+    </body>
+</html>

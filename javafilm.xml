@@ -4,20 +4,20 @@
 <film>
 <id>1</id>
 <name>Star Wars: Episode VII - The Force Awakens</name>
-<duration>136 min</duration>
+<duration>136</duration>
 <description>A continuation of the saga created by George Lucas</description>
-<year>2015</year>
+<release>2015</release>
 <status>Post-production</status>
-<is_serial>0</is_serial>
+<isSerial>0</isSerial>
 </film>
 <film>
 <id>2</id>
 <name>Farscape</name>
-<duration>50 min</duration>
+<duration>50</duration>
 <description>Thrown into a distant part of the universe, an Earth astronaut finds himself part of a fugitive alien starship crew.</description>
-<year>1999</year>
+<release>1999</release>
 <status>Completed</status>
-<is_serial>1</is_serial>
+<isSerial>1</isSerial>
 </film>
 </films>
 <genres>
@@ -93,7 +93,7 @@ Fantasy is a genre of fiction that commonly uses magic and other supernatural ph
 <film_id>2</film_id>
 <name>Eat Me</name>
 <description>The crew of Moya come across a diseased Leviathan used by the Peacekeepers as a prison for the criminally insane. It has been taken over by an individual who "twins" the humanoid inhabitants of the ship and uses them as a food source.</description>
-<year>2001</year>
+<release>2001</release>
 <season>3</season>
 <episode>6</episode>
 </series>

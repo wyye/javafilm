@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/entities/Production.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/web/jquery-1.11.3.min.js</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/managers/FilmManagerLocal.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/managers/FilmManager.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/web/index.xhtml</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/controllers/XMLRWController.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/services/FilmResource.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/entities/Film.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/controllers/FilmController.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/org/netbeans/rest/application/config/ApplicationConfig.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/services/ProductionResource.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/web/productions.xhtml</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/controllers/FilmEditController.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/managers/ProductionManager.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/controllers/ProductionController.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/exceptions/TagException.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/web/WEB-INF/web.xml</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/web/filmcountries.html</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/src/java/wyye/javafilm/managers/ProductionManagerLocal.java</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/web/productions.html</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/web/films.xhtml</file>
+            <file>file:/home/ad/NetBeansProjects/JavaFilm/web/films.html</file>
+        </group>
+    </open-files>
+</project-private>

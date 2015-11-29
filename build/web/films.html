@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Films</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-1.11.3.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            var mainContentRows = 0;
+
+            getAllFilms = function () {
+                $.ajax({
+                    type: "GET",
+                    url: "./webresources/Film/getAllFilms",
+                    success: function (responseText, statusText) {
+                        if (statusText === 'success') {
+                            for (var i = 0; i < responseText.length; i++) {
+                                row = $('<tr id="main-content-' + i + '">' +
+                                        '<td>' + responseText[i].id + '</td>' +
+                                        '<td>' + responseText[i].name + '</td>' +
+                                        '<td>' + responseText[i].duration + '</td>' +
+                                        '<td>' + responseText[i].description + '</td>' +
+                                        '<td>' + responseText[i].release + '</td>' +
+                                        '<td>' + responseText[i].status + '</td>' +
+                                        '<td>' + responseText[i].isSerial + '</td>' +
+                                        '<td>' + responseText[i].productionId + '</td>' +
+                                        '<td><button onclick="deleteFilm(' + i + ', ' + responseText[i].id +
+                                        ')" type="button" class="btn btn-danger">delete</button></td>' +
+                                        '</tr>');
+                                row.appendTo('#main-content');
+                            }
+                            mainContentRows = responseText.length;
+                        }
+                    },
+                    error: function (responseText) {
+                        message("Can't get all films", 'alert-danger');
+                        console.log(JSON.stringify(responseText));
+                    },
+                    dataType: "json"
+                });
+            };
+
+            deleteFilm = function (filmRow, filmId) {
+                $.ajax({
+                    type: "GET",
+                    url: "./webresources/Film/deleteFilm?filmId=" + filmId,
+                    dataType: 'json',
+                    success: function (responseText, statusText) {
+                        if (statusText === 'success') {
+                            console.log(JSON.stringify(responseText));
+                            row = $('#main-content-' + filmRow);
+                            row.remove();
+                            message("Film deleted", 'alert-success');
+                        }
+                    },
+                    error: function (responseText) {
+                        message("Can't delete film", 'alert-danger');
+                        console.log(JSON.stringify(responseText));
+                    }
+                });
+            };
+
+            message = function (msg, newClass) {
+                $('#message-area').html(msg);
+                $("#message-area").removeClass();
+                $("#message-area").removeAttr('style');
+                $("#message-area").addClass('alert');
+                $("#message-area").addClass(newClass);
+            };
+
+            $(function () {
+                getAllFilms();
+            });
+
+            $.fn.serializeObject = function ()
+            {
+                var o = {};
+                var a = this.serializeArray();
+                $.each(a, function () {
+                    if (this.value !== "" && this.value !== undefined) {
+                        o[this.name] = this.value;
+                    }
+                });
+                return o;
+            };
+
+            addFilm = function () {
+                $.ajax({
+                    type: "POST",
+                    url: "./webresources/Film/addFilm",
+                    data: JSON.stringify($('#create-form').serializeObject()),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function (responseText, statusText) {
+                        if (statusText === 'success') {
+                            console.log(JSON.stringify(responseText));
+                            row = $('<tr id="main-content-' + mainContentRows + '">' +
+                                    '<td>' + responseText.id + '</td>' +
+                                    '<td>' + responseText.name + '</td>' +
+                                    '<td>' + responseText.duration + '</td>' +
+                                    '<td>' + responseText.description + '</td>' +
+                                    '<td>' + responseText.release + '</td>' +
+                                    '<td>' + responseText.status + '</td>' +
+                                    '<td>' + responseText.isSerial + '</td>' +
+                                    '<td>' + responseText.productionId + '</td>' +
+                                    '<td><button onclick="deleteFilm(' + mainContentRows + ', ' + responseText.id +
+                                    ')" type="button" class="btn btn-danger">delete</button></td>' +
+                                    '</tr>');
+                            row.appendTo('#main-content');
+                            mainContentRows++;
+                            message("Film added", 'alert-success');
+                        }
+                    },
+                    error: function (responseText) {
+                        message("Can't add film", 'alert-danger');
+                        console.log(JSON.stringify(responseText));
+                    }
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="films.html">Films</a></li>
+                            <li><a href="productions.html">Productions</a></li>
+                            <li><a href="filmcountries.html">Productions</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+            </nav>
+            <table id="main-content" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>duration</th>
+                        <th>description</th>
+                        <th>release</th>
+                        <th>status</th>
+                        <th>isSerial</th>
+                        <th>productionId</th>
+                        <th>delete</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="message-area" class="alert alert-info" role="alert" style="display: none"></div>
+            <form id="create-form" method="post" action="" style="max-width: 300px">
+                <div class="form-group">
+                    <label>Add film</label>
+                    <input class="form-control" placeholder="id" type="text" name="id" />
+                    <input class="form-control" placeholder="name" type="text" name="name"/>
+                    <input class="form-control" placeholder="duration" type="text" name="duration" />
+                    <input class="form-control" placeholder="description" type="text" name="description" />
+                    <input class="form-control" placeholder="release" type="text" name="release" />
+                    <input class="form-control" placeholder="status" type="text" name="status" />
+                    <select name="isSerial" class="form-control" >
+                        <option value="false">Film</option>
+                        <option value="true">Serial</option>
+                    </select>
+                    <input class="form-control" placeholder="productionId" type="text" name="productionId" />
+                </div>
+            </form>
+            <button class="btn btn-success" onclick="addFilm()">Create</button>
+        </div>
+    </body>
+</html>

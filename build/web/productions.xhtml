@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view>
+        <h:head>
+            <title>Productions</title>
+        </h:head>
+        <h:body>
+            <h:button value="Home" outcome="index"/>
+            <h:form id="table">  
+                <h:messages showDetail="true"></h:messages>
+                <table>
+                    <tr>
+                        <td>id</td>
+                        <td>name</td>
+                        <td>country</td>
+                    </tr>
+                    <ui:repeat value="#{productionController.productions}" var="production">
+                        <tr>
+                            <td>#{production.id}</td>
+                            <td>#{production.name}</td>
+                            <td>#{production.country}</td> 
+                            <td>
+                                <h:commandButton value="Delete" actionListener="#{productionController.deleteProduction(production.id)}">
+                                    <f:ajax execute="@this" render=":table"/>
+                                </h:commandButton>
+                            </td>
+                        </tr>
+                    </ui:repeat>                    
+                </table>
+            </h:form>
+            <h:form id="create_form">
+                <h:panelGrid columns="2">
+                    id <h:inputText value="#{productionEditController.id}"/>
+                    name <h:inputText value="#{productionEditController.name}"/>
+                    country <h:inputText value="#{productionEditController.country}"/>
+                </h:panelGrid>
+                <h:commandButton value="Create" actionListener="#{productionController.createProduction(productionEditController)}">
+                    <f:ajax execute="@form" render=":table :create_form"/>
+                </h:commandButton>
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
